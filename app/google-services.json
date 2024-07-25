@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "413027882120",
+    "project_id": "coderarena-553f3",
+    "storage_bucket": "coderarena-553f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413027882120:android:daa0c3b68069e57febfb3d",
+        "android_client_info": {
+          "package_name": "com.coder.arena"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9hYdJ81gP15IIeD1vbr0M1wJsOHe_X7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
