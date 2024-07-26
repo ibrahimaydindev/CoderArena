@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoderArena"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.dialogs.ErrorDialog"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MakeQuizActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.GetPremiumActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SettingsActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="true">
