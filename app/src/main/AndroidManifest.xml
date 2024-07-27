@@ -18,10 +18,7 @@
             android:name=".ui.dialogs.ErrorDialog"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.MakeQuizActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activity.GetPremiumActivity"
+            android:name=".ui.activity.QuizActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.ProfileActivity"
@@ -41,6 +38,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

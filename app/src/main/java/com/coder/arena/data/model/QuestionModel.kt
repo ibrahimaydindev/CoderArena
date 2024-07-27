@@ -1,12 +1,11 @@
 package com.coder.arena.data.model
 
-import java.util.Date
-
+import android.media.Image
 data class QuestionModel(
-    val id: String,
-    val name: String,
-    val dateOfBirth: Date,
-    val phoneNumber: String,
-    val country: String,
-    val age: Int
+    val questionId: String,
+    val questionCreatorId : String,
+    val questionText : String,
+    val questionImage : Image,
+    val questionTime : Int,
+    val options : ArrayList<QuestionOption>
 )
