@@ -1,1 +1,0 @@
-C:\Users\Ahmet Serdar\Documents\GitHub\CoderArena\buildSrc\build\classes\kotlin\main\Config.class;C:\Users\Ahmet Serdar\Documents\GitHub\CoderArena\buildSrc\build\classes\kotlin\main\Dependencies.class;C:\Users\Ahmet Serdar\Documents\GitHub\CoderArena\buildSrc\build\classes\kotlin\main\Versions.class
