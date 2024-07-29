@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.coder.arena.R
-import com.coder.arena.ui.fragment.signUpFragments.AccountTypeFragment
+import com.coder.arena.ui.fragment.signUpFragments.SignUpFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -36,7 +36,7 @@ class SplashActivity : AppCompatActivity() {
 
         } else {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_account_type_container, AccountTypeFragment())
+                .replace(R.id.fragment_account_type_container, SignUpFragment())
                 .commit()
         }
     }

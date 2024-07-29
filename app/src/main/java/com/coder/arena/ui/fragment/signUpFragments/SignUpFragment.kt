@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentTransaction
+import android.widget.ImageView
+import android.widget.ViewFlipper
 import com.coder.arena.R
 
 
-class AccountTypeFragment : Fragment() {
+class SignUpFragment : Fragment() {
+
+    private var viewFlipper: ViewFlipper? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,21 +25,28 @@ class AccountTypeFragment : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_account_type, container, false)
+        val view = inflater.inflate(R.layout.fragment_sign_up, container, false)
+        viewFlipper = view.findViewById(R.id.create_account_flipper);
 
         val skipButton = view.findViewById<View>(R.id.skip_button)
         skipButton.setOnClickListener {
-            navigateNextFragment()
+            showNext()
         }
+        val backButton = view.findViewById<View>(R.id.back_button)
+        backButton.setOnClickListener {
+            showPrevious()
+        }
+
 
         return view
     }
-    private fun navigateNextFragment() {
-        val fragment = AccountDetailsFragment()
-        val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_account_type_container, fragment)
-        transaction.addToBackStack(null) // onBackPressed
-        transaction.commit()
+
+    private fun showNext() {
+        viewFlipper?.showNext()
+    }
+
+    private fun showPrevious() {
+        viewFlipper?.showPrevious()
     }
 
 }
