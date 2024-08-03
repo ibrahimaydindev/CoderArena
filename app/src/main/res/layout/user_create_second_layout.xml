@@ -109,7 +109,7 @@
                     app:layout_constraintStart_toStartOf="parent"/>
 
                 <EditText
-                    android:id="@+id/full_name"
+                    android:id="@+id/user_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -130,11 +130,11 @@
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/full_name"/>
+                    app:layout_constraintTop_toBottomOf="@id/user_name"/>
 
 
                 <EditText
-                    android:id="@+id/birth_date"
+                    android:id="@+id/e_mail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -156,17 +156,17 @@
                     android:textColor="@color/black"
                     android:text="Password"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/birth_date"/>
+                    app:layout_constraintTop_toBottomOf="@id/e_mail"/>
 
                 <EditText
-                    android:id="@+id/editTextPhone"
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#4E2FDF"
                     android:drawableEnd="@drawable/hide_eye"
                     android:ems="10"
-                    android:text="123456"
+                    android:hint="******"
                     android:inputType="numberPassword"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/phone_title"/>

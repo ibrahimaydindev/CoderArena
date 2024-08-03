@@ -142,7 +142,7 @@
                     android:drawableEnd="@drawable/calendar_ic"
                     android:ems="10"
                     android:inputType="date"
-                    android:hint="01.01.2000"
+                    android:hint="(dd/mm/yyyy)"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/birth_title"/>
 
@@ -201,30 +201,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/country_spinner"/>
 
-
-                <TextView
-                    android:id="@+id/age_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/nunito_bold"
-                    android:text="Age"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/country_splitter"/>
-
-                <EditText
-                    android:id="@+id/age_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:backgroundTint="#4E2FDF"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:hint="Age"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/age_title"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

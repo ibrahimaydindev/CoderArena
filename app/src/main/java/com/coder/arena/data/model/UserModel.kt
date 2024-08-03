@@ -4,17 +4,18 @@ import android.media.Image
 import java.util.Date
 
 data class UserModel(
-    val id: String,
-    val name: String,
-    val userName: String,
-    val password:String,
-    val accountType:String,
-    val accountWorkspace:String,
-    val eMail: String,
-    val phoneNumber: String,
-    val country: String,
-    var age: Int,
-    val level : Int,
-    val isPremium : Boolean,
+    var id: String = "",
+    var name: String = "",
+    var userName: String = "",
+    var password: String = "",
+    var accountType: String = "",
+    var accountWorkspace: String = "",
+    var birthDate: Date = Date(),
+    var eMail: String = "",
+    var phoneNumber: String = "",
+    var country: String = "",
+    var age: Int = 0,
+    var level: Int = 0,
+    var isPremium: Boolean = false
 
-)
+    )

@@ -30,15 +30,19 @@ class SplashActivity : AppCompatActivity() {
 
     private fun checkUserSession() {
         val currentUser = auth.currentUser
-        if (currentUser != null) {
+        //if (currentUser != null) {
+//
+        //    loadUserData(currentUser)
+//
+        //} else {
+        //    supportFragmentManager.beginTransaction()
+        //        .replace(R.id.fragment_account_type_container, SignUpFragment())
+        //        .commit()
+        //}
 
-            loadUserData(currentUser)
-
-        } else {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_account_type_container, SignUpFragment())
-                .commit()
-        }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_account_type_container, SignUpFragment())
+            .commit()
     }
 
     private fun loadUserData(user: FirebaseUser) {

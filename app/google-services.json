@@ -12,7 +12,20 @@
           "package_name": "com.coder.arena"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "413027882120-8aagbdbto5pp0dab5efb3dq4u982dj4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.coder.arena",
+            "certificate_hash": "afd6712fac195267b6e904c5d3bf7305cda75950"
+          }
+        },
+        {
+          "client_id": "413027882120-9rkc4kvusl37s90tq220l5a4r4lf4g6q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC9hYdJ81gP15IIeD1vbr0M1wJsOHe_X7c"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413027882120-9rkc4kvusl37s90tq220l5a4r4lf4g6q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
