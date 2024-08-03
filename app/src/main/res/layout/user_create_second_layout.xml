@@ -19,7 +19,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/back_button"
+                android:id="@+id/user_create_2_back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow_left_dark"
@@ -36,7 +36,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@id/back_button"
+                app:layout_constraintStart_toEndOf="@id/user_create_2_back_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
@@ -116,7 +116,7 @@
                     android:backgroundTint="#4E2FDF"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="user_name"
+                    android:hint="user_name"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name_title"/>
 
@@ -142,7 +142,7 @@
                     android:ems="10"
                     android:inputType="textEmailAddress"
                     android:backgroundTint="#4E2FDF"
-                    android:text="user@user.com"
+                    android:hint="user@user.com"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/birth_title"/>
 
