@@ -1,5 +1,6 @@
 package com.coder.arena.ui.fragment.signUpFragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,7 +16,12 @@ import com.coder.arena.R
 import com.coder.arena.data.enum.AccountTypeEnum
 import com.coder.arena.data.enum.AccountWorkspaceEnum
 import com.coder.arena.data.model.UserModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -27,6 +33,8 @@ class SignUpFragment : Fragment() {
     private lateinit var newUser:UserModel
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
+    private val RC_SIGN_IN = 9001
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
@@ -39,6 +47,17 @@ class SignUpFragment : Fragment() {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         firestore =FirebaseFirestore.getInstance()
+
+
+        // Configure Google Sign-In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+
+
+
         newUser = UserModel()
     }
 
@@ -188,10 +207,11 @@ class SignUpFragment : Fragment() {
         val eMail = view.findViewById<EditText>(R.id.e_mail)
         val password = view.findViewById<EditText>(R.id.password)
 
-        val userCreate1ContinueButton = view.findViewById<View>(R.id.sign_up_button)
+        val userCreate2SignUp = view.findViewById<View>(R.id.sign_up_button)
+        val userCreateGoogleSignUp = view.findViewById<View>(R.id.google_sign_up_button)
         val userCreate2BackButton = view.findViewById<View>(R.id.user_create_2_back_button)
 
-        userCreate1ContinueButton.setOnClickListener {
+        userCreate2SignUp.setOnClickListener {
 
             if (userName.text.toString().isEmpty())
                 return@setOnClickListener
@@ -209,6 +229,20 @@ class SignUpFragment : Fragment() {
             Log.i("Create User","newUser : " + newUser.toString())
 
             createUser(newUser.eMail, newUser.password)
+        }
+
+        userCreateGoogleSignUp.setOnClickListener {
+
+            if (userName.text.toString().isEmpty())
+                return@setOnClickListener
+
+
+            newUser.userName = userName.text.toString()
+
+
+            Log.i("Create User","newUser : " + newUser.toString())
+
+            createGoogleUser()
         }
 
         userCreate2BackButton.setOnClickListener {
@@ -232,15 +266,53 @@ class SignUpFragment : Fragment() {
             }
     }
 
+    private fun createGoogleUser() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)!!
+                Log.i("Create User", "firebaseAuthWithGoogle:" + account.id)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: Exception) {
+                Log.e("Create User", "Google sign in failed", e)
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    if (user != null) {
+                        newUser.id = user.uid
+                        newUser.eMail = user.email.toString()
+                        newUser.password = "0000"
+                        addUserToFirestore(newUser.id)
+                    }
+                    else
+                        return@addOnCompleteListener
+
+                } else {
+                    Log.e("Create User", "Google sign in failed", task.exception)
+                }
+            }
+    }
+
 
     private fun addUserToFirestore(userId: String?) {
         if (userId != null) {
-            // `newUser` nesnesini Firestore'da `users` koleksiyonuna ekleyin
             firestore.collection("users").document(userId).set(newUser)
                 .addOnSuccessListener {
-                    Log.i("Create User", "User successfully added to Firestore")
-                    // Kullanıcıyı yönlendirme veya diğer işlemleri gerçekleştirebilirsiniz
-                }
+                    Log.i("Create User", "User successfully added to Firestore") }
                 .addOnFailureListener { e ->
                     Log.e("Create User", "Error adding user to Firestore", e)
                 }

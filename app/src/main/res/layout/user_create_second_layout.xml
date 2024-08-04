@@ -181,7 +181,7 @@
                 android:layout_marginBottom="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/google_sign_in_button">
+                app:layout_constraintBottom_toTopOf="@id/google_sign_up_button">
 
 
                 <View
@@ -223,7 +223,7 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/google_sign_in_button"
+                android:id="@+id/google_sign_up_button"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginBottom="20dp"
