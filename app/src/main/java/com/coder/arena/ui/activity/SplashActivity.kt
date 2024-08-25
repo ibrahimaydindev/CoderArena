@@ -1,15 +1,16 @@
 package com.coder.arena.ui.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
 import com.coder.arena.R
-import com.coder.arena.ui.fragment.signUpFragments.SignUpFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 class SplashActivity : AppCompatActivity() {
 
+    private lateinit var viewPager: ViewPager2
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +41,11 @@ class SplashActivity : AppCompatActivity() {
         //        .commit()
         //}
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_account_type_container, SignUpFragment())
-            .commit()
+
+
+     //   supportFragmentManager.beginTransaction()
+     //       .replace(R.id.fragment_account_type_container, SignUpFragment())
+     //       .commit()
     }
 
     private fun loadUserData(user: FirebaseUser) {
